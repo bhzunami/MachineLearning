@@ -61,12 +61,18 @@ if __name__ == "__main__":
     theta = np.matrix(np.array([0,0])) 
 
     alpha = 0.01
-    iters = 1000
+    iters = 1500
 
     g, cost = gradientDescent(X, y, theta, alpha, iters)
+    
+    print("Found gradient descent by {} and {}".format(g[0, 0], g[0, 1]))
+    #print("Error {}".format(computeCost(X, y, g)))
+    
+    predict1 = np.dot(g, np.array([1, 3.5])).item(0)  # g[0, 0] + (3.5 * g[0, 1])
+    predict2 = np.dot(g, np.array([1, 7])).item(0)
 
-    print("Error {}".format(computeCost(X, y, g)))
-
+    print("For population = 35'000 we predict a profit of {}".format(predict1 * 10000))
+    print("For population = 70'000 we predict a profit of {}".format(predict2 * 10000))
     # Plot
     x = np.linspace(data.Population.min(), data.Population.max(), 100)
     f = g[0, 0] + (g[0, 1] * x)
