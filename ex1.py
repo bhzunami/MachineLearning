@@ -24,7 +24,7 @@ def gradientDescent(X, y, theta, alpha, iters):
     cost = np.zeros(iters)
 
     for i in range(iters):
-        error = (X * theta.T) -y
+        error = (X * theta.T) - y
 
         for j in range(parameters):
             term = np.multiply(error, X[:, j])
@@ -58,16 +58,16 @@ if __name__ == "__main__":
     y = np.matrix(y.values)
 
     # theta [[0,0]]
-    theta = np.matrix(np.array([0,0])) 
+    theta = np.matrix(np.array([0, 0]))
 
     alpha = 0.01
     iters = 1500
 
     g, cost = gradientDescent(X, y, theta, alpha, iters)
-    
+
     print("Found gradient descent by {} and {}".format(g[0, 0], g[0, 1]))
-    #print("Error {}".format(computeCost(X, y, g)))
-    
+    # print("Error {}".format(computeCost(X, y, g)))
+
     predict1 = np.dot(g, np.array([1, 3.5])).item(0)  # g[0, 0] + (3.5 * g[0, 1])
     predict2 = np.dot(g, np.array([1, 7])).item(0)
 
